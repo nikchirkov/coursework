@@ -1,0 +1,828 @@
+/* ===================================
+   Детские праздники и развлечения
+   Монохромный дизайн (синий)
+   =================================== */
+
+:root {
+    --primary: #4a90d9;
+    --primary-dark: #3a7bc8;
+    --primary-light: #6ba3e0;
+    --primary-pale: #e8f1fc;
+    --text-dark: #1a1a2e;
+    --text-gray: #5a5a7a;
+    --white: #ffffff;
+    --shadow: 0 4px 20px rgba(74, 144, 217, 0.15);
+    --shadow-lg: 0 10px 40px rgba(74, 144, 217, 0.25);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', 'Segoe UI', system-ui, sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--white);
+}
+
+/* ===================================
+   Навигация
+   =================================== */
+.navbar {
+    background: var(--primary) !important;
+    padding: 15px 0;
+    transition: all 0.4s ease;
+}
+
+.navbar.scrolled {
+    padding: 10px 0;
+    box-shadow: 0 5px 30px rgba(74, 144, 217, 0.4);
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white) !important;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+}
+
+.navbar-brand i {
+    color: var(--white);
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    10%, 30% { transform: scale(1.1); }
+    20%, 40% { transform: scale(1); }
+}
+
+.nav-link {
+    font-weight: 600;
+    color: var(--white) !important;
+    margin: 0 10px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--white);
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* ===================================
+   Hero секция
+   =================================== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background: var(--primary);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    animation: float 8s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-30px) rotate(5deg); }
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.2;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero-lead {
+    font-size: 1.25rem;
+    color: var(--primary-pale);
+    margin-bottom: 30px;
+    animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.btn-hero {
+    background: var(--white);
+    color: var(--primary);
+    padding: 16px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 2px solid var(--white);
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+    animation: fadeInUp 1s ease-out 0.6s both, pulse 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hero::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(74, 144, 217, 0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-hero:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-hero:hover {
+    background: transparent;
+    color: var(--white);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(74, 144, 217, 0.4);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4); }
+    50% { box-shadow: 0 0 0 15px rgba(255, 255, 255, 0); }
+}
+
+.hero-visual {
+    text-align: center;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.hero-emoji {
+    font-size: 14rem !important;
+    display: block !important;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+    cursor: pointer;
+    transition: transform 0.3s;
+    animation: balloonFloat 3s ease-in-out infinite;
+}
+
+.hero-emoji:hover {
+    transform: scale(1.15);
+}
+
+/* Анимация парения и вращения шарика (вертикальное + горизонтальное) */
+@keyframes balloonFloat {
+    0%, 100% { 
+        transform: translateY(0) rotate(-3deg) rotateY(-5deg);
+    }
+    25% { 
+        transform: translateY(-15px) rotate(0deg) rotateY(0deg);
+    }
+    50% { 
+        transform: translateY(-25px) rotate(3deg) rotateY(5deg);
+    }
+    75% { 
+        transform: translateY(-15px) rotate(0deg) rotateY(0deg);
+    }
+}
+
+/* Когда hero-visual фиксированный - уменьшаем шарик но сохраняем анимацию */
+.hero-visual[style*="position: fixed"] .hero-emoji {
+    font-size: 8rem !important;
+    animation: balloonFloatFixed 2s ease-in-out infinite;
+}
+
+@keyframes balloonFloatFixed {
+    0%, 100% { 
+        transform: translateY(0) rotate(-2deg) rotateY(-3deg);
+    }
+    50% { 
+        transform: translateY(-10px) rotate(2deg) rotateY(3deg);
+    }
+}
+
+/* ===================================
+   Заголовки секций
+   =================================== */
+.section-title {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin-bottom: 15px;
+    display: inline-block;
+    position: relative;
+}
+
+.section-title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 0;
+    height: 3px;
+    background: var(--primary);
+    transition: width 0.6s ease;
+    transform: translateX(-50%);
+}
+
+.section-title.visible h2::after {
+    width: 80px;
+}
+
+.section-title p {
+    font-size: 1.1rem;
+    color: var(--text-gray);
+    transition: opacity 0.6s ease;
+    opacity: 0;
+}
+
+.section-title.visible p {
+    opacity: 1;
+}
+
+/* ===================================
+   Услуги
+   =================================== */
+.services {
+    padding: 100px 0;
+    background: var(--primary-pale);
+    position: relative;
+    overflow: hidden;
+}
+
+.services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100px;
+    width: 200px;
+    height: 200px;
+    background: rgba(74, 144, 217, 0.1);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.services::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(74, 144, 217, 0.08);
+    border-radius: 50%;
+    animation: float 12s ease-in-out infinite reverse;
+}
+
+.service-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 30px;
+    text-align: center;
+    height: 100%;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 2px solid var(--primary-pale);
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.service-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    transform: translateY(-15px) scale(1.02);
+    border-color: var(--primary);
+    box-shadow: 0 15px 40px rgba(74, 144, 217, 0.25);
+}
+
+.service-card:hover .service-icon {
+    background: var(--primary-dark);
+    transform: rotateY(180deg) scale(1.1);
+}
+
+.service-icon {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.service-card h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: var(--text-gray);
+    line-height: 1.7;
+}
+
+/* ===================================
+   Преимущества
+   =================================== */
+.benefits {
+    padding: 100px 0;
+    background: var(--primary);
+    position: relative;
+    overflow: hidden;
+}
+
+.benefits::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 15s ease-in-out infinite;
+}
+
+.benefits .section-title h2 {
+    color: var(--white);
+}
+
+.benefits .section-title p {
+    color: var(--primary-pale);
+}
+
+.benefit-item {
+    text-align: center;
+    padding: 30px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.benefit-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.benefit-item:hover {
+    transform: translateY(-10px);
+}
+
+.benefit-item:hover .benefit-icon {
+    transform: scale(1.2) rotate(10deg);
+}
+
+.benefit-icon {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.benefit-item h4 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--white);
+    margin-bottom: 10px;
+}
+
+.benefit-item p {
+    color: var(--primary-pale);
+    font-size: 1rem;
+}
+
+/* ===================================
+   Галерея
+   =================================== */
+.gallery {
+    padding: 100px 0;
+    background: var(--white);
+}
+
+.gallery-item {
+    border-radius: var(--radius);
+    overflow: hidden;
+    border: 3px solid var(--primary-pale);
+    transition: all 0.4s;
+    cursor: pointer;
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.gallery-item.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.gallery-item:hover {
+    border-color: var(--primary);
+    transform: scale(1.05);
+    box-shadow: 0 15px 40px rgba(74, 144, 217, 0.25);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.15) rotate(2deg);
+    filter: brightness(1.1);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===================================
+   Контакты и форма
+   =================================== */
+.contact {
+    padding: 100px 0;
+    background: var(--primary-pale);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact::before {
+    content: '';
+    position: absolute;
+    top: -150px;
+    left: -150px;
+    width: 400px;
+    height: 400px;
+    background: rgba(74, 144, 217, 0.08);
+    border-radius: 50%;
+    animation: float 20s ease-in-out infinite;
+}
+
+.contact-wrapper {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    border: 2px solid var(--primary-pale);
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.contact-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-info {
+    background: var(--primary);
+    padding: 60px 40px;
+    color: var(--white);
+    height: 100%;
+}
+
+.contact-info h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.contact-info > p {
+    color: var(--primary-pale);
+    margin-bottom: 40px;
+}
+
+.contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 25px;
+}
+
+.contact-info-item i {
+    font-size: 1.3rem;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    color: var(--white);
+}
+
+.contact-info-item strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--white);
+}
+
+.contact-info-item a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+.contact-info-item a:hover {
+    opacity: 0.8;
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6px;
+    color: var(--white);
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background: var(--white);
+    color: var(--primary);
+}
+
+.contact-form-wrapper {
+    padding: 60px 40px;
+}
+
+.contact-form-wrapper h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 30px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.form-control,
+.form-select {
+    border-radius: 10px;
+    padding: 12px 16px;
+    border: 2px solid var(--primary-pale);
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-pale);
+    outline: none;
+    transform: translateY(-2px);
+}
+
+.form-control:hover,
+.form-select:hover {
+    border-color: var(--primary-light);
+}
+
+.btn-submit {
+    background: var(--primary);
+    color: var(--white);
+    border: 2px solid var(--primary);
+    padding: 14px 40px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-submit::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-submit:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+.btn-submit:hover {
+    background: var(--white);
+    color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(74, 144, 217, 0.3);
+}
+
+.form-check-input:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+/* ===================================
+   Footer
+   =================================== */
+footer {
+    background: var(--primary);
+    color: var(--white);
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    animation: float 18s ease-in-out infinite;
+}
+
+footer p {
+    color: var(--primary-pale);
+    position: relative;
+    z-index: 1;
+}
+
+footer a {
+    color: var(--white);
+    text-decoration: none;
+    font-size: 1.4rem;
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+footer a:hover {
+    opacity: 0.8;
+    transform: translateY(-5px) scale(1.2);
+    color: var(--white);
+}
+
+.social-links a {
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+    background: var(--primary-light);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    margin: 0 6px;
+    color: var(--white);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-links a:hover {
+    background: var(--white);
+    color: var(--primary);
+    transform: translateY(-8px) scale(1.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ===================================
+   Адаптивность
+   =================================== */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero-emoji {
+        font-size: 7rem;
+    }
+    
+    .section-title h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 0;
+        min-height: auto;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .hero-emoji {
+        font-size: 5rem;
+        margin-top: 30px;
+    }
+    
+    .section-title h2 {
+        font-size: 1.6rem;
+    }
+    
+    .service-card {
+        padding: 30px 20px;
+    }
+    
+    .contact-info,
+    .contact-form-wrapper {
+        padding: 40px 25px;
+    }
+    
+    .benefit-item h4 {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===================================
+   Анимации
+   =================================== */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .hero-emoji {
+        display: none;
+    }
+}
